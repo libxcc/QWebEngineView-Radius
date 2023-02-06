@@ -95,5 +95,10 @@ bool XccEngineRender::eventFilter(QObject* _Object, QEvent* _Event)
 		auto		vPaintEvent = dynamic_cast<QPaintEvent*>(_Event);
 		emit signalPaintEvent(vPaintEvent);
 	}
+	if (_Object == memberChildWidget && _Event->type() == QEvent::CursorChange)
+	{
+		auto		vCursorStatus = memberChildWidget->cursor().shape();
+		emit signalCursorChange(vCursorStatus);
+	}
 	return QWebEngineView::eventFilter(_Object, _Event);
 }

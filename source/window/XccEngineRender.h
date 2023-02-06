@@ -37,6 +37,9 @@ protected:
 signals:
 	// [signal] PaintEvent
 	void signalPaintEvent(QPaintEvent* _Event);
+
+	// [signal] CursorChange
+	void signalCursorChange(Qt::CursorShape _CursorStatus);
 };
 
 #endif

@@ -74,6 +74,9 @@ public:
 public slots:
 	// [receive] 绘图事件
 	virtual void receivePaintEvent(QPaintEvent* _Event) noexcept final;
+
+	// [receive] 鼠标转换
+	virtual void receiveCursorChange(Qt::CursorShape _CursorStatus) noexcept final;
 };
 
 #endif

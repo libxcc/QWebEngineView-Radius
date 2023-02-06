@@ -174,6 +174,7 @@ void XccEngineWidget::setEngineRender(XccEngineRender* _Render) noexcept
 	memberEngineRender = _Render;
 
 	QObject::connect(memberEngineRender, &XccEngineRender::signalPaintEvent, this, &XccEngineWidget::receivePaintEvent);
+	QObject::connect(memberEngineRender, &XccEngineRender::signalCursorChange, this, &XccEngineWidget::receiveCursorChange);
 
 	memberEngineRender->setParent(nullptr);
 	memberEngineRender->move(-1000, -1000);
@@ -198,4 +199,10 @@ void XccEngineWidget::receivePaintEvent(QPaintEvent* _Event) noexcept
 		memberEnginePixmap = memberEngineRender->renderPixmap();
 	}
 	update();
+}
+
+// [receive] 鼠标转换
+void XccEngineWidget::receiveCursorChange(Qt::CursorShape _CursorStatus) noexcept
+{
+	this->setCursor(_CursorStatus);
 }
